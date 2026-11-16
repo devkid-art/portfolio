@@ -27,6 +27,22 @@ export async function ProjectTicket({ project, locale, index }: { project: Proje
         <div className="flex flex-col">
           <h3 className="font-display text-[clamp(2rem,3.4vw,2.8rem)] font-extrabold leading-[0.95]">{project.name}</h3>
           <p className="mt-3 text-[1.05rem] leading-snug">{project.tagline[locale]}</p>
+          {project.statusNote && <p className="mt-2 text-sm text-muted">{project.statusNote[locale]}</p>}
+          {project.status === 'building' && project.progress !== undefined && (
+            <div className="mt-4">
+              <div
+                role="progressbar"
+                aria-valuenow={project.progress}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-label={t('progress')}
+                className="h-2 overflow-hidden rounded-full bg-line"
+              >
+                <div className="h-full rounded-full bg-indigo" style={{ width: `${project.progress}%` }} />
+              </div>
+              <p className="mt-1.5 text-sm text-muted">{t('progressNote', { progress: project.progress })}</p>
+            </div>
+          )}
           <ul className="mt-4 flex flex-wrap gap-1.5" aria-label={t('stack')}>
             {chips.map((id) => (
               <li key={id} className="rounded-full border border-line px-2.5 py-0.5 text-sm text-muted">

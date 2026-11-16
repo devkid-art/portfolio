@@ -22,6 +22,8 @@ export interface Project {
   year: number;
   liveUrl?: string;
   tagline: Localized;
+  /** Honest context printed on the ticket, e.g. a redesign the client did not adopt. */
+  statusNote?: Localized;
   problem: Localized;
   highlights: Localized<string[]>;
   stack: TechId[];

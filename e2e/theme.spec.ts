@@ -1,4 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
+import { gotoHydrated } from './helpers';
 import { expect, test } from '@playwright/test';
 
 const toggle = (page: import('@playwright/test').Page) =>
@@ -6,7 +7,7 @@ const toggle = (page: import('@playwright/test').Page) =>
 
 test('the toggle switches data-theme', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'light' });
-  await page.goto('/fr');
+  await gotoHydrated(page, '/fr');
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
   await toggle(page).click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
@@ -14,7 +15,7 @@ test('the toggle switches data-theme', async ({ page }) => {
 
 test('the chosen theme survives a reload', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'light' });
-  await page.goto('/fr');
+  await gotoHydrated(page, '/fr');
   await toggle(page).click();
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');

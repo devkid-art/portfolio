@@ -229,6 +229,10 @@ export const projects: Project[] = [
       fr: 'Proposition de refonte complète d’une boutique de cosmétiques à Douala.',
       en: 'A complete redesign proposal for a cosmetics store in Douala.',
     },
+    statusNote: {
+      fr: 'Proposition de refonte complète et fonctionnelle, non retenue par le client : le site en ligne reste l’ancien.',
+      en: 'A complete, working redesign proposal the client did not adopt: the live site is still the old one.',
+    },
     problem: {
       fr: 'La boutique en ligne existante était datée et ne permettait ni paiement mobile ni gestion simple du stock.',
       en: 'The existing online store was dated, with no mobile payments and no simple stock management.',
@@ -261,6 +265,10 @@ export const projects: Project[] = [
     tagline: {
       fr: 'Boutique en ligne de beauté coréenne, livrée avec son administration.',
       en: 'A Korean-beauty online store, delivered with its admin.',
+    },
+    statusNote: {
+      fr: 'Livrée et opérationnelle ; la boutique n’est plus en ligne aujourd’hui.',
+      en: 'Delivered and in operation; the store is no longer online today.',
     },
     problem: {
       fr: 'La boutique vendait surtout par messages privés, sans catalogue en ligne, sans suivi du stock ni des ventes.',

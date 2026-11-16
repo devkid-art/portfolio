@@ -23,6 +23,75 @@
       "delivered": "Delivered",
       "proposal": "Proposal",
       "building": "Building {progress}%"
+    },
+    "progress": "Project progress",
+    "progressNote": "About {progress}% done"
+  },
+  "stats": {
+    "label": "In numbers",
+    "products": "products built",
+    "live": "live today",
+    "technologies": "technologies used for real",
+    "languages": "languages spoken"
+  },
+  "clients": {
+    "title": "For clients",
+    "intro": "Two complete online stores, with their admin, for businesses in Douala."
+  },
+  "building": {
+    "title": "Under construction",
+    "intro": "What I am building right now. The figure is an honest estimate of progress."
+  },
+  "skills": {
+    "title": "Skills, with proof",
+    "intro": "Every technology below was used in at least one real project. Pick one to see where.",
+    "hint": "Pick a technology to see the projects that use it.",
+    "usedIn": "Projects using {tech}:",
+    "groups": {
+      "frontend": "Interface",
+      "backend": "Server",
+      "data": "Data",
+      "mobile": "Mobile",
+      "quality": "Quality & tests",
+      "devops": "Deployment",
+      "integrations": "Payments & services"
     }
+  },
+  "process": {
+    "title": "How I work",
+    "intro": "I work with Claude Code as a teammate: I describe, review every change, run the tests and decide. AI speeds up writing code; the design, the choices and the responsibility stay mine.",
+    "steps": {
+      "need": {
+        "title": "Understand the need",
+        "text": "Who will use the product, to do what, and what would count as failure."
+      },
+      "spec": {
+        "title": "Specify",
+        "text": "Features, roles and permissions, data, edge cases: written before the first line of code."
+      },
+      "architecture": {
+        "title": "Design",
+        "text": "Pick the stack, the data model and the module boundaries, and write down why."
+      },
+      "build": {
+        "title": "Build with AI",
+        "text": "Claude Code writes with me, task by task; I review and fix every change."
+      },
+      "test": {
+        "title": "Test",
+        "text": "Unit, integration and end-to-end tests (Vitest, Jest, Playwright) before calling it done."
+      },
+      "ship": {
+        "title": "Ship",
+        "text": "Deployment (Vercel, Render, VPS), backups and documentation for what comes next."
+      }
+    }
+  },
+  "contact": {
+    "title": "Let’s talk",
+    "text": "Open to conversations, internships and projects. Message me on LinkedIn, or browse my code on GitHub."
+  },
+  "footer": {
+    "built": "Built with Next.js, GSAP and Three.js."
   }
 }

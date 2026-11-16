@@ -23,6 +23,75 @@
       "delivered": "Livré",
       "proposal": "Proposition",
       "building": "En chantier {progress} %"
+    },
+    "progress": "Avancement du projet",
+    "progressNote": "Environ {progress} % réalisé"
+  },
+  "stats": {
+    "label": "En chiffres",
+    "products": "produits construits",
+    "live": "en ligne aujourd’hui",
+    "technologies": "technologies utilisées en vrai",
+    "languages": "langues parlées"
+  },
+  "clients": {
+    "title": "Pour des clients",
+    "intro": "Deux boutiques en ligne complètes, avec leur administration, pour des commerces de Douala."
+  },
+  "building": {
+    "title": "En chantier",
+    "intro": "Ce que je construis en ce moment. Le chiffre est une estimation honnête de l’avancement."
+  },
+  "skills": {
+    "title": "Compétences, avec preuves",
+    "intro": "Chaque technologie ci-dessous a servi dans au moins un vrai projet. Choisissez-en une pour voir où.",
+    "hint": "Choisissez une technologie pour voir les projets qui l’utilisent.",
+    "usedIn": "Projets qui utilisent {tech} :",
+    "groups": {
+      "frontend": "Interface",
+      "backend": "Serveur",
+      "data": "Données",
+      "mobile": "Mobile",
+      "quality": "Qualité & tests",
+      "devops": "Déploiement",
+      "integrations": "Paiements & services"
     }
+  },
+  "process": {
+    "title": "Comment je travaille",
+    "intro": "Je travaille avec Claude Code comme coéquipier : je décris, je relis chaque changement, je fais tourner les tests et je décide. L’IA accélère l’écriture du code ; la conception, les choix et la responsabilité restent les miens.",
+    "steps": {
+      "need": {
+        "title": "Comprendre le besoin",
+        "text": "Qui va utiliser le produit, pour faire quoi, et ce qui serait un échec."
+      },
+      "spec": {
+        "title": "Spécifier",
+        "text": "Fonctionnalités, rôles et permissions, données, cas limites : écrits avant la première ligne de code."
+      },
+      "architecture": {
+        "title": "Concevoir",
+        "text": "Choisir la stack, le modèle de données et les frontières entre modules, et noter pourquoi."
+      },
+      "build": {
+        "title": "Construire avec l’IA",
+        "text": "Claude Code écrit avec moi, tâche par tâche ; je relis et je corrige chaque changement."
+      },
+      "test": {
+        "title": "Tester",
+        "text": "Tests unitaires, d’intégration et de bout en bout (Vitest, Jest, Playwright) avant de dire « fini »."
+      },
+      "ship": {
+        "title": "Mettre en ligne",
+        "text": "Déploiement (Vercel, Render, VPS), sauvegardes et documentation pour la suite."
+      }
+    }
+  },
+  "contact": {
+    "title": "Parlons-en",
+    "text": "Ouvert aux échanges, aux stages et aux projets. Écrivez-moi sur LinkedIn, ou parcourez mon code sur GitHub."
+  },
+  "footer": {
+    "built": "Construit avec Next.js, GSAP et Three.js."
   }
 }
