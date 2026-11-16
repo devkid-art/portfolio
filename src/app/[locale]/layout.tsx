@@ -3,6 +3,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { fontVariables } from '@/app/fonts';
 import { Header } from '@/components/layout/Header';
+import { MotionProvider } from '@/components/motion/MotionProvider';
 import { themeScript } from '@/components/theme/theme-script';
 import { routing } from '@/i18n/routing';
 
@@ -23,8 +24,10 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
       </head>
       <body>
         <NextIntlClientProvider>
-          <Header />
-          {children}
+          <MotionProvider>
+            <Header />
+            {children}
+          </MotionProvider>
         </NextIntlClientProvider>
       </body>
     </html>
