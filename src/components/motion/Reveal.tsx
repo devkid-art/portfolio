@@ -1,12 +1,11 @@
 'use client';
 
 import { useRef } from 'react';
-import { gsap, useGSAP } from '@/lib/gsap';
-import { useMotion } from './MotionProvider';
+import { useScrollMotion } from '@/lib/motion';
 
 type Variant = 'rise' | 'stamp';
 
-const FROM: Record<Variant, gsap.TweenVars> = {
+const FROM: Record<Variant, Record<string, number | string>> = {
   rise: { y: 24, opacity: 0, duration: 0.6, ease: 'power3.out' },
   // The seal "hits" the ticket: oversized and tilted, then settles.
   stamp: { scale: 1.4, rotate: -14, opacity: 0, duration: 0.28, ease: 'back.out(2.2)' },
@@ -30,18 +29,17 @@ export function Reveal({
   children: React.ReactNode;
 }) {
   const ref = useRef<HTMLElement>(null);
-  const { reduced } = useMotion();
 
-  useGSAP(
-    () => {
-      if (reduced || !ref.current) return;
-      gsap.from(ref.current, {
+  useScrollMotion(
+    ref,
+    ({ gsap }, root) => {
+      gsap.from(root, {
         ...FROM[variant],
         delay,
-        scrollTrigger: { trigger: ref.current, start: 'top 88%', once: true },
+        scrollTrigger: { trigger: root, start: 'top 88%', once: true },
       });
     },
-    { dependencies: [reduced, variant, delay] },
+    [variant, delay],
   );
 
   return (

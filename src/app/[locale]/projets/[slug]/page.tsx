@@ -78,7 +78,7 @@ export default async function CaseStudyPage({ params }: PageProps<'/[locale]/pro
             )}
           </div>
         </div>
-        <ProjectMedia project={project} label={ts('mediaLabel', { name: project.name })} />
+        <ProjectMedia project={project} label={ts('mediaLabel', { name: project.name })} priority />
       </header>
 
       <div className="mt-14 grid gap-12 md:grid-cols-[1fr_280px]">

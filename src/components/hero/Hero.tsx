@@ -1,5 +1,4 @@
 import { useTranslations } from 'next-intl';
-import { Reveal } from '@/components/motion/Reveal';
 import { profile } from '@/content/profile';
 import type { Locale } from '@/i18n/routing';
 import { GlobeFallback } from './GlobeFallback';
@@ -9,7 +8,7 @@ export function Hero({ locale }: { locale: Locale }) {
   const t = useTranslations('hero');
   return (
     <section aria-labelledby="hero-name" className="mx-auto grid max-w-[1240px] items-center gap-8 px-5 pb-16 pt-4 md:grid-cols-12 md:gap-6 md:px-8 md:pb-24 md:pt-10">
-      <Reveal className="md:col-span-7">
+      <div className="md:col-span-7">
         <h1 id="hero-name" className="font-display text-[clamp(5.5rem,19vw,11.5rem)] font-extrabold leading-[0.82] tracking-[-0.015em]">
           {profile.name}
         </h1>
@@ -34,7 +33,7 @@ export function Hero({ locale }: { locale: Locale }) {
             GitHub
           </a>
         </div>
-      </Reveal>
+      </div>
       <div className="md:col-span-5">
         <GlobeLoader label={t('globeLabel')}>
           <GlobeFallback locale={locale} />

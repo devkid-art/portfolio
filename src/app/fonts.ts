@@ -1,8 +1,11 @@
 import { Archivo, Big_Shoulders, Big_Shoulders_Stencil } from 'next/font/google';
 
+// Kept lean for slow mobile networks: the 'latin' subset covers French and English accents,
+// the variable files carry only the weight axis, and the stencil face (used below the fold
+// for codes and stamps) is not preloaded.
+
 export const display = Big_Shoulders({
-  subsets: ['latin', 'latin-ext'],
-  axes: ['opsz'],
+  subsets: ['latin'],
   variable: '--font-display',
   adjustFontFallback: false,
   display: 'swap',
@@ -10,15 +13,15 @@ export const display = Big_Shoulders({
 
 export const stencil = Big_Shoulders_Stencil({
   subsets: ['latin'],
-  weight: ['700', '800'],
+  weight: '800',
   variable: '--font-stencil',
   adjustFontFallback: false,
   display: 'swap',
+  preload: false,
 });
 
 export const body = Archivo({
-  subsets: ['latin', 'latin-ext'],
-  axes: ['wdth'],
+  subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
 });

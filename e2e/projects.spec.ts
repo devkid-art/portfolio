@@ -28,6 +28,20 @@ test('every ticket carries its tracking code and status stamp', async ({ page })
   await expect(page.locator('[data-slug="reserve"] [data-stamp]')).toHaveText('Prêt');
 });
 
+test('no project video loads before scrolling, and posters are always resized', async ({ page }) => {
+  const videos: string[] = [];
+  const rawPosters: string[] = [];
+  page.on('request', (r) => {
+    const { pathname } = new URL(r.url());
+    if (/\/media\/.+\/loop\.(webm|mp4)$/.test(pathname)) videos.push(pathname);
+    if (/^\/media\/.+\.webp$/.test(pathname)) rawPosters.push(pathname);
+  });
+  await page.goto('/fr');
+  await page.waitForLoadState('networkidle');
+  expect(videos).toEqual([]);
+  expect(rawPosters).toEqual([]);
+});
+
 test.describe('without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
   test('featured project names are in the HTML', async ({ page }) => {

@@ -29,15 +29,25 @@ export function GlobeLoader({ label, children }: { label: string; children: Reac
   const box = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (reduced || !supportsWebGL()) {
-      setEnabled(false);
-      setReady(false);
-      return;
-    }
-    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 400));
-    const cancel = window.cancelIdleCallback ?? window.clearTimeout;
-    const id = idle(() => setEnabled(true));
-    return () => cancel(id);
+    if (reduced || !supportsWebGL()) return;
+    // three.js only loads on the visitor's first gesture (or after a long pause), so it never
+    // competes with the first paint; until then the SVG globe looks the same.
+    const GESTURES = ['pointermove', 'pointerdown', 'wheel', 'touchstart', 'keydown', 'scroll'] as const;
+    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 200));
+    let done = false;
+    const start = () => {
+      if (done) return;
+      done = true;
+      cleanup();
+      idle(() => setEnabled(true));
+    };
+    const timer = window.setTimeout(start, 9000);
+    const cleanup = () => {
+      window.clearTimeout(timer);
+      GESTURES.forEach((g) => window.removeEventListener(g, start));
+    };
+    GESTURES.forEach((g) => window.addEventListener(g, start, { once: true, passive: true }));
+    return cleanup;
   }, [reduced]);
 
   useEffect(() => {
@@ -48,13 +58,16 @@ export function GlobeLoader({ label, children }: { label: string; children: Reac
   }, []);
 
   const handleReady = useCallback(() => setReady(true), []);
+  // Switching to reduced motion mid-visit drops the 3D globe and shows the static one again.
+  const show3d = enabled && !reduced;
+  const covered = ready && show3d;
 
   return (
     <div ref={box} data-globe="" role="img" aria-label={label} className="relative aspect-square w-full">
-      <div aria-hidden="true" className={`transition-opacity duration-700 ${ready ? 'opacity-0' : 'opacity-100'}`}>
+      <div aria-hidden="true" className={`transition-opacity duration-700 ${covered ? 'opacity-0' : 'opacity-100'}`}>
         {children}
       </div>
-      {enabled && (
+      {show3d && (
         <div className="absolute inset-0">
           <Globe active={onScreen} onReady={handleReady} />
         </div>
