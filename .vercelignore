@@ -1,0 +1,9 @@
+# Local tooling and internal notes: never uploaded to Vercel.
+.claude
+.superpowers
+.mcp.json
+skills-dev-web-mobile.md
+docs
+e2e
+test-results
+playwright-report

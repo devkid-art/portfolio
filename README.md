@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ruben — portfolio
 
-## Getting Started
+Mon portfolio de développeur full-stack web & mobile : étudiant en génie logiciel à Nanjing Tech University, Camerounais vivant en Chine, je construis des produits qui relient l’Afrique et la Chine.
 
-First, run the development server:
+*My full-stack web & mobile developer portfolio — a software engineering student at Nanjing Tech University, Cameroonian living in China, building products that connect Africa and China.*
+
+## Le concept — « Je construis des ponts »
+
+- **Une route** qui se dessine au défilement, avec chaque projet comme escale.
+- **Des billets de fret** : code de suivi, trajet (DLA ⟶ NKG), QR code vers le site et sceau de statut couleur cinabre.
+- **Un globe 3D** dont les arcs relient le Cameroun et la Chine.
+- **Une direction artistique** qui croise l’indigo du ndop (Grassfields du Cameroun) et le rouge des sceaux chinois. Voir [DESIGN.md](DESIGN.md).
+
+## Stack
+
+Next.js 16 (App Router, génération statique) · React 19 · TypeScript · Tailwind CSS 4 · next-intl (FR/EN) · MDX · GSAP + ScrollTrigger · Lenis · Three.js / React Three Fiber · next/og · Vitest · Playwright + axe
+
+## Qualité
+
+- Tests unitaires (Vitest) et de bout en bout (Playwright), y compris sans JavaScript, sans WebGL, en mouvement réduit et sur un téléphone de 375 px.
+- Audit d’accessibilité axe (WCAG 2.2 AA), mode clair et sombre.
+- Les animations et la 3D se chargent à la demande, après le premier affichage.
+
+## Lancer en local
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # http://localhost:3000
+npm test             # tests unitaires
+npm run e2e          # tests de bout en bout
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`node scripts/capture/capture.mjs` refait les captures et les vidéos des projets.
