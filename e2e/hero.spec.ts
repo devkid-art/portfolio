@@ -5,7 +5,8 @@ test.describe('hero', () => {
     await page.goto('/fr');
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Ruben');
     await expect(page.getByRole('link', { name: 'Voir mes projets' })).toHaveAttribute('href', '#projets');
-    await expect(page.getByRole('main').getByRole('link', { name: /GitHub/ })).toHaveAttribute(
+    const hero = page.getByRole('region', { name: 'Ruben' });
+    await expect(hero.getByRole('link', { name: 'GitHub' })).toHaveAttribute(
       'href',
       'https://github.com/devkid-art',
     );

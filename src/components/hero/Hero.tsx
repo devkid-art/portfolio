@@ -8,9 +8,9 @@ import { GlobeLoader } from './GlobeLoader';
 export function Hero({ locale }: { locale: Locale }) {
   const t = useTranslations('hero');
   return (
-    <section className="mx-auto grid max-w-[1240px] items-center gap-8 px-5 pb-16 pt-4 md:grid-cols-12 md:gap-6 md:px-8 md:pb-24 md:pt-10">
+    <section aria-labelledby="hero-name" className="mx-auto grid max-w-[1240px] items-center gap-8 px-5 pb-16 pt-4 md:grid-cols-12 md:gap-6 md:px-8 md:pb-24 md:pt-10">
       <Reveal className="md:col-span-7">
-        <h1 className="font-display text-[clamp(5.5rem,19vw,11.5rem)] font-extrabold leading-[0.82] tracking-[-0.015em]">
+        <h1 id="hero-name" className="font-display text-[clamp(5.5rem,19vw,11.5rem)] font-extrabold leading-[0.82] tracking-[-0.015em]">
           {profile.name}
         </h1>
         <p className="mt-3 font-display text-[clamp(1.65rem,3.4vw,2.6rem)] font-semibold leading-tight text-indigo">
