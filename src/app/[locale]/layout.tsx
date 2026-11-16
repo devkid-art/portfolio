@@ -1,6 +1,9 @@
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { fontVariables } from '@/app/fonts';
+import { Header } from '@/components/layout/Header';
+import { themeScript } from '@/components/theme/theme-script';
 import { routing } from '@/i18n/routing';
 
 export function generateStaticParams() {
@@ -13,9 +16,16 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
   setRequestLocale(locale);
 
   return (
-    <html lang={locale}>
+    // data-theme is set by themeScript before hydration, hence suppressHydrationWarning.
+    <html lang={locale} className={fontVariables} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Header />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
