@@ -89,7 +89,8 @@
   },
   "contact": {
     "title": "Let’s talk",
-    "text": "Open to conversations, internships and projects. Message me on LinkedIn, or browse my code on GitHub."
+    "text": "Open to conversations, internships and projects. Message me on LinkedIn, or browse my code on GitHub.",
+    "textNoLinkedin": "Open to conversations, internships and projects. Browse my code on GitHub; my LinkedIn profile will be linked here soon."
   },
   "footer": {
     "built": "Built with Next.js, GSAP and Three.js."

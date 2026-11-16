@@ -36,3 +36,9 @@ export const profile = {
   },
   photo: 'PLACEHOLDER_PHOTO',
 } as const;
+
+/** Contact links ready to publish: anything still waiting for the owner is left out. */
+export function publicLinks(): { github: string; linkedin?: string } {
+  const { github, linkedin } = profile.links;
+  return linkedin.includes('PLACEHOLDER_') ? { github } : { github, linkedin };
+}

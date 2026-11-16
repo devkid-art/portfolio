@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { profile } from '@/content/profile';
+import { profile, publicLinks } from '@/content/profile';
 import type { Locale } from '@/i18n/routing';
 
 /**
@@ -17,6 +17,7 @@ const NDOP_TILE = `url("data:image/svg+xml,${encodeURIComponent(
 
 export async function Contact({ locale }: { locale: Locale }) {
   const t = await getTranslations({ locale, namespace: 'contact' });
+  const links = publicLinks();
   return (
     <section id="contact" aria-labelledby="contact-title" className="relative mt-10 overflow-hidden bg-[#1f2c78] text-white">
       <div aria-hidden="true" className="absolute inset-0 opacity-[0.13]" style={{ backgroundImage: NDOP_TILE }} />
@@ -24,18 +25,22 @@ export async function Contact({ locale }: { locale: Locale }) {
         <h2 id="contact-title" className="font-display text-[clamp(3rem,8vw,6.5rem)] font-extrabold leading-[0.9]">
           {t('title')}
         </h2>
-        <p className="mt-6 max-w-[48ch] text-lg text-white/85">{t('text')}</p>
+        <p className="mt-6 max-w-[48ch] text-lg text-white/85">{links.linkedin ? t('text') : t('textNoLinkedin')}</p>
         <p className="mt-2 text-white/85">{profile.languages[locale].join(', ')}</p>
         <div className="mt-10 flex flex-wrap gap-4">
+          {links.linkedin && (
+            <a
+              href={links.linkedin}
+              className="inline-flex min-h-12 items-center rounded-[10px] bg-white px-6 font-semibold text-[#1f2c78] transition-transform hover:-translate-y-0.5"
+            >
+              LinkedIn
+            </a>
+          )}
           <a
-            href={profile.links.linkedin}
-            className="inline-flex min-h-12 items-center rounded-[10px] bg-white px-6 font-semibold text-[#1f2c78] transition-transform hover:-translate-y-0.5"
-          >
-            LinkedIn
-          </a>
-          <a
-            href={profile.links.github}
-            className="inline-flex min-h-12 items-center rounded-[10px] border-2 border-white px-6 font-semibold transition-colors hover:bg-white/10"
+            href={links.github}
+            className={`inline-flex min-h-12 items-center rounded-[10px] px-6 font-semibold transition-colors ${
+              links.linkedin ? 'border-2 border-white hover:bg-white/10' : 'bg-white text-[#1f2c78] hover:-translate-y-0.5'
+            }`}
           >
             GitHub
           </a>

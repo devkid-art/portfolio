@@ -30,14 +30,20 @@ test('the project under construction shows its progress', async ({ page }) => {
   );
 });
 
-test('contact offers exactly GitHub and LinkedIn', async ({ page }) => {
+test('contact offers GitHub, LinkedIn only once known, and never an e-mail or phone', async ({ page }) => {
   await page.goto('/fr');
-  const external = page.locator('#contact a[href^="http"]');
-  await expect(external).toHaveCount(2);
   await expect(page.locator('#contact a[href="https://github.com/devkid-art"]')).toHaveCount(1);
-  await expect(page.locator('#contact a[href*="linkedin.com/in/"]')).toHaveCount(1);
+  const external = await page.locator('#contact a[href^="http"]').evaluateAll((as) => as.map((a) => a.getAttribute('href')!));
+  for (const href of external) expect(href).toMatch(/^https:\/\/(github\.com\/devkid-art|www\.linkedin\.com\/in\/[A-Za-z0-9-]+)\/?$/);
   await expect(page.locator('#contact a[href^="mailto:"], #contact a[href^="tel:"]')).toHaveCount(0);
 });
+
+for (const path of ['/fr', '/en', '/fr/projets/colisa']) {
+  test(`${path} never publishes a placeholder value`, async ({ page }) => {
+    await page.goto(path);
+    expect(await page.content()).not.toContain('PLACEHOLDER');
+  });
+}
 
 test('the language switch keeps the visitor on the same page', async ({ page }) => {
   await page.goto('/fr');
@@ -50,13 +56,13 @@ test('the language switch keeps the visitor on the same page', async ({ page }) 
 
 test.describe('without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
-  test('all eight project names and the LinkedIn link are in the HTML', async ({ page }) => {
+  test('all eight project names and the GitHub contact are in the HTML', async ({ page }) => {
     await page.goto('/fr');
     for (const name of [
       'Student Network China', 'StudyBridge', 'RIDELAB', 'Colisa', 'Réserve', 'School SaaS', 'ESA Cosmetics', 'The Welfare Shop',
     ]) {
       await expect(page.getByRole('heading', { name, exact: true })).toBeVisible();
     }
-    await expect(page.locator('a[href*="linkedin.com/in/"]').first()).toBeVisible();
+    await expect(page.locator('#contact a[href="https://github.com/devkid-art"]')).toBeVisible();
   });
 });

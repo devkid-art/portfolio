@@ -89,7 +89,8 @@
   },
   "contact": {
     "title": "Parlons-en",
-    "text": "Ouvert aux échanges, aux stages et aux projets. Écrivez-moi sur LinkedIn, ou parcourez mon code sur GitHub."
+    "text": "Ouvert aux échanges, aux stages et aux projets. Écrivez-moi sur LinkedIn, ou parcourez mon code sur GitHub.",
+    "textNoLinkedin": "Ouvert aux échanges, aux stages et aux projets. Parcourez mon code sur GitHub ; mon profil LinkedIn arrive bientôt ici."
   },
   "footer": {
     "built": "Construit avec Next.js, GSAP et Three.js."
