@@ -1,8 +1,10 @@
 {
-  "home": {
-    "title": "Portfolio"
-  },
   "theme": {
     "toggle": "Switch theme (light or dark)"
+  },
+  "hero": {
+    "cta": "See my work",
+    "globeLabel": "Globe showing my routes between Cameroon (Douala, Yaoundé) and China (Nanjing, Guangzhou, Shanghai, Beijing)",
+    "journey": "My route: from Douala to Nanjing, where I study."
   }
 }

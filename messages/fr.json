@@ -1,8 +1,10 @@
 {
-  "home": {
-    "title": "Portfolio"
-  },
   "theme": {
     "toggle": "Changer de thème (clair ou sombre)"
+  },
+  "hero": {
+    "cta": "Voir mes projets",
+    "globeLabel": "Globe montrant mes routes entre le Cameroun (Douala, Yaoundé) et la Chine (Nankin, Canton, Shanghai, Pékin)",
+    "journey": "Ma route : de Douala à Nankin, où j’étudie."
   }
 }

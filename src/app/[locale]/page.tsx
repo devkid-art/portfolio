@@ -1,17 +1,14 @@
-import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
-import { Reveal } from '@/components/motion/Reveal';
+import { Hero } from '@/components/hero/Hero';
+import type { Locale } from '@/i18n/routing';
 
 export default function HomePage({ params }: PageProps<'/[locale]'>) {
   const { locale } = use(params);
   setRequestLocale(locale);
-  const t = useTranslations('home');
   return (
     <main>
-      <Reveal>
-        <h1>{t('title')}</h1>
-      </Reveal>
+      <Hero locale={locale as Locale} />
     </main>
   );
 }
