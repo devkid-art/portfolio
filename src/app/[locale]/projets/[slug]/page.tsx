@@ -25,6 +25,13 @@ export async function generateMetadata({ params }: PageProps<'/[locale]/projets/
   return {
     title: `${project.name} — ${profile.name}`,
     description: project.tagline[l],
+    openGraph: {
+      type: 'article',
+      siteName: profile.name,
+      title: `${project.name} — ${profile.name}`,
+      description: project.tagline[l],
+      locale: l === 'fr' ? 'fr_FR' : 'en_US',
+    },
     alternates: {
       canonical: `/${l}/projets/${slug}`,
       languages: Object.fromEntries(routing.locales.map((x) => [x, `/${x}/projets/${slug}`])),

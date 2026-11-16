@@ -3,6 +3,7 @@ import { use } from 'react';
 import { Hero } from '@/components/hero/Hero';
 import { FeaturedProjects } from '@/components/projects/FeaturedProjects';
 import { RouteLine } from '@/components/route/RouteLine';
+import { PersonJsonLd } from '@/components/seo/PersonJsonLd';
 import { Contact } from '@/components/sections/Contact';
 import { HowIWork } from '@/components/sections/HowIWork';
 import { SkillsProof } from '@/components/sections/SkillsProof';
@@ -16,6 +17,7 @@ export default function HomePage({ params }: PageProps<'/[locale]'>) {
   setRequestLocale(locale);
   return (
     <main>
+      <PersonJsonLd locale={locale} />
       <Hero locale={locale} />
       <Stats locale={locale} />
       <div className="relative">
