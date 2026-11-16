@@ -1,0 +1,29 @@
+## What the product does
+
+Réserve is a **white-label online booking SaaS** for small businesses: salons, barbers, spas, photographers, garages, consultants. It was designed first for Cameroon and French-speaking Africa.
+
+- Every business gets **a booking page in its own colours** and a management dashboard
+- Customers book **with no account and no online payment**, then manage their appointment through a secure link
+- Reminders and purges run as a scheduled job
+
+## Architecture
+
+<Architecture layers={[
+  { name: 'Next.js 16', detail: 'App Router, strict TypeScript' },
+  { name: 'Drizzle ORM', detail: 'SQL migrations' },
+  { name: 'PostgreSQL 17', detail: 'Row-Level Security' },
+  { name: 'Resend', detail: 'e-mails' },
+]} />
+
+One deployable modular monolith: no Redis, no queue service, no Docker in production (Docker is only for the local database).
+
+## Technical choices
+
+- **Tenant isolation in the database** with PostgreSQL Row-Level Security: the app connects with a role that only sees the current business’s data.
+- **IANA time zones** (Luxon) and protection against **concurrent double bookings**.
+- **argon2id sessions with no external auth vendor**.
+- **Full documentation**: architecture, database, security, testing, environment variables, deployment and a pre-launch checklist.
+
+## Quality
+
+Type checking and lint, unit and integration tests against PostgreSQL, Playwright end-to-end tests on the production build.

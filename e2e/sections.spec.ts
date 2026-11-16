@@ -43,6 +43,7 @@ test('the language switch keeps the visitor on the same page', async ({ page }) 
   await page.goto('/fr');
   await page.getByRole('link', { name: 'English' }).click();
   await expect(page).toHaveURL(/\/en$/);
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await page.getByRole('link', { name: 'Français' }).click();
   await expect(page).toHaveURL(/\/fr$/);
 });

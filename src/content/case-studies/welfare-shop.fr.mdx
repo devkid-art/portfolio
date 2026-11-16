@@ -1,0 +1,23 @@
+## Ce que fait le produit
+
+La boutique en ligne de The Welfare Shop, spécialiste de la beauté coréenne, livrée avec toute son administration. Elle a été **opérationnelle** ; elle n’est plus en ligne aujourd’hui.
+
+- **Boutique** : univers, rails, filtres, recherche, panier latéral, codes promo (dont un code de bienvenue réservé à la première commande), commande sur WhatsApp
+- **Activité** : visiteuses en ligne (page consultée, provenance, appareil), mots les plus recherchés et « cherchés mais introuvables », produits vus, ajoutés et vendus, avec des rapports sur 7, 30 ou 90 jours comparés à la période précédente
+- **Stock** : historique des mouvements, caisse en boutique, import CSV, retour en stock, marges et alertes
+
+## Architecture
+
+<Architecture layers={[
+  { name: 'HTML, CSS, JS', detail: 'boutique responsive' },
+  { name: 'Node.js + Express', detail: 'API, admin' },
+  { name: 'SQLite', detail: 'intégré à Node.js' },
+  { name: 'NotchPay', detail: 'paiement mobile' },
+]} />
+
+## Choix techniques
+
+- **Des statistiques sans cookies ni service extérieur** : le suivi est interne et anonyme, l’équipe et les robots sont exclus, les données sont gardées 90 jours.
+- **Données de démonstration chargées seulement en local** ; en production, la boutique démarre vide, et le tableau de bord propose de supprimer les données de test en un clic, après une sauvegarde automatique.
+- **Identité visuelle** issue du logo : rose poudré, noir et blanc, polices Cinzel, Cormorant Garamond et Jost.
+- **Déploiement documenté** sur Render et sur VPS.

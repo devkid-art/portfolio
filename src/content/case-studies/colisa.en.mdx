@@ -1,0 +1,29 @@
+## What the product does
+
+Colisa is a complete SaaS for **import-export freight forwarders**: real-time parcel tracking, customers, employees, shipments by container or air batch, WhatsApp notifications and subscriptions, with a super-admin panel.
+
+- **Public site**: presentation, pricing, FAQ, company sign-up, parcel tracking by code or **QR scan**
+- **Company workspace**: dashboard (KPIs, 30-day chart, top destinations), parcels, shipments, customers, employees, subscription, settings
+- **Customer portal**: their parcels and status
+- **Super admin**: companies, plans, payments
+
+## Architecture
+
+<Architecture layers={[
+  { name: 'HTML, CSS, JS', detail: 'responsive UI, FR/EN' },
+  { name: 'Node.js + Express', detail: 'API, JWT' },
+  { name: 'SQLite', detail: 'built into Node.js' },
+  { name: 'WhatsApp', detail: 'notifications' },
+]} />
+
+## Technical choices
+
+- **No external database to install**: the SQLite built into Node.js is enough to run a company.
+- **Prices computed automatically**: per kilo by air, per cubic metre by sea.
+- **Bulk status changes**: update a whole container at once, with one WhatsApp notification per parcel, within the plan’s quota.
+- **Printable labels with QR codes** and CSV export for Excel.
+- **Per-employee permissions** (parcels, customers, shipments) and a number of employees limited by plan.
+
+## Status
+
+Complete and working with its demo accounts; not deployed yet.

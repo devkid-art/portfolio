@@ -1,0 +1,23 @@
+## Ce que fait le produit
+
+Une refonte complète de la boutique en ligne d’ESA Cosmetics, à Douala, avec les couleurs du logo. La proposition était **fonctionnelle de bout en bout**, mais le client ne l’a pas retenue : le site en ligne aujourd’hui reste l’ancien.
+
+- **Boutique** : rails Nouveautés, Meilleures ventes, Soldes, Retour en stock ; filtres par catégorie et marque, tri et recherche ; fiche produit et produits similaires
+- **Panier latéral**, barre de progression vers la livraison offerte, codes promo
+- **Commande** enregistrée puis envoyée en récapitulatif sur WhatsApp ; bouton flottant vers WhatsApp, Instagram, Facebook, TikTok, téléphone et e-mail
+- **Administration** : chiffre d’affaires, commandes, alertes de stock, produits, catégories, marques, codes promo, newsletter, réglages du site appliqués en direct
+
+## Architecture
+
+<Architecture layers={[
+  { name: 'HTML, CSS, JS', detail: 'boutique responsive' },
+  { name: 'Node.js + Express', detail: 'API, admin' },
+  { name: 'SQLite', detail: 'intégré à Node.js' },
+  { name: 'NotchPay', detail: 'carte, Orange Money, MTN MoMo' },
+]} />
+
+## Choix techniques
+
+- **Paiement mobile local** avec NotchPay ; sans clé configurée, seul le paiement à la livraison est proposé.
+- **Le stock est remis automatiquement** quand une commande est annulée.
+- **Images optimisées** et stockage compatible S3, sauvegardes automatiques, guide de déploiement sur VPS.

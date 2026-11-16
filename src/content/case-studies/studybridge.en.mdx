@@ -1,0 +1,27 @@
+## What the product does
+
+StudyBridge is a B2B platform for agencies that guide students to Chinese universities. It replaces spreadsheets and scattered chats with a reliable catalogue and a complete workspace.
+
+- **Public site**: presentation, CSCA exam, conferences, news
+- **Catalogue**: scholarships (types A to E), universities, self-financed programmes, filtered by degree, language and scholarship type
+- **Agent workspace**: overview, wallet and top-ups, orders, students, favourites, messages, identity, settings
+
+## Architecture
+
+<Architecture layers={[
+  { name: 'Next.js', detail: 'Frontend, Tailwind' },
+  { name: 'Express', detail: 'TypeScript API, JWT' },
+  { name: 'PostgreSQL', detail: 'Prisma' },
+  { name: 'Services', detail: 'Stripe, Resend, Cloudinary' },
+]} />
+
+## Technical choices
+
+- **An agent tier engine** from 0 to 7 stars: the tier is computed automatically from top-ups and gives up to 50% off service fees.
+- **An application-fee engine** that applies the business rules (base amount, per-school surcharge, the CSC scholarship exception).
+- **Stripe payments** (cards and Alipay) to top up the wallet, with a mock mode in development to test without real money.
+- **API hardening**: secure headers, rate limiting, input validation.
+
+## In production
+
+The site is live and in operation at studybridgechina.uk.

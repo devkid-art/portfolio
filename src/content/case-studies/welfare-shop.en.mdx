@@ -1,0 +1,23 @@
+## What the product does
+
+The online store of The Welfare Shop, a Korean-beauty specialist, delivered with its full admin. It was **in operation**; it is no longer online today.
+
+- **Store**: collections, rails, filters, search, slide-out cart, promo codes (including a welcome code for the first order only), WhatsApp ordering
+- **Activity**: live visitors (page viewed, source, device), most searched words and “searched but not found”, products viewed, added and sold, with 7, 30 or 90-day reports compared with the previous period
+- **Stock**: movement history, in-store till, CSV import, back-in-stock, margins and alerts
+
+## Architecture
+
+<Architecture layers={[
+  { name: 'HTML, CSS, JS', detail: 'responsive store' },
+  { name: 'Node.js + Express', detail: 'API, admin' },
+  { name: 'SQLite', detail: 'built into Node.js' },
+  { name: 'NotchPay', detail: 'mobile payments' },
+]} />
+
+## Technical choices
+
+- **Analytics with no cookies and no third party**: tracking is internal and anonymous, staff and bots are excluded, data is kept 90 days.
+- **Demo data loaded only locally**; in production the store starts empty, and the dashboard offers to delete test data in one click, after an automatic backup.
+- **Visual identity** taken from the logo: powder pink, black and white, with Cinzel, Cormorant Garamond and Jost.
+- **Documented deployment** on Render and on a VPS.

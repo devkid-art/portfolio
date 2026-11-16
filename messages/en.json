@@ -93,5 +93,17 @@
   },
   "footer": {
     "built": "Built with Next.js, GSAP and Three.js."
+  },
+  "case": {
+    "back": "Back to projects",
+    "problem": "The problem",
+    "role": "My role",
+    "stack": "Technologies",
+    "gallery": "Screenshots"
+  },
+  "notFound": {
+    "title": "This page does not exist",
+    "text": "The link may be old. Every project is on the home page.",
+    "home": "Back to home"
   }
 }

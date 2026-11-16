@@ -21,6 +21,19 @@ test('the chosen theme survives a reload', async ({ page }) => {
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
 });
 
+test('the chosen theme survives a language switch, with no console error', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
+  await page.emulateMedia({ colorScheme: 'light' });
+  await gotoHydrated(page, '/fr');
+  await toggle(page).click();
+  await page.getByRole('link', { name: 'English' }).click();
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await page.locator('html[data-motion]').waitFor({ state: 'attached' });
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  expect(errors).toEqual([]);
+});
+
 test('without a saved choice the theme follows the system', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'dark' });
   await page.goto('/fr');

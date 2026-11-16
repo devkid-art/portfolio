@@ -1,0 +1,28 @@
+## Ce que fait le produit
+
+RIDELAB est une marketplace internationale de **véhicules, engins lourds, pièces et accessoires** en provenance de Chine. Les clients parcourent, cherchent, filtrent, puis envoient leur demande sur **WhatsApp**. Il n’y a pas de paiement en ligne dans cette première version : la vente se conclut en conversation, avec la bonne référence.
+
+- Catalogue par type de produit, catégorie, marque et caractéristiques techniques
+- Plusieurs devises
+- Comptes clients avec réinitialisation du mot de passe par e-mail
+- Administration du catalogue et de l’équipe
+
+## Architecture
+
+<Architecture layers={[
+  { name: 'Next.js 16', detail: 'App Router, TypeScript' },
+  { name: 'PostgreSQL', detail: 'Prisma 7, pg_trgm' },
+  { name: 'Cloudinary', detail: 'photos produits' },
+  { name: 'WhatsApp', detail: 'demandes' },
+]} />
+
+## Choix techniques
+
+- **Chaque demande porte un identifiant produit exact** (par exemple `RID-EQP-00021`). Le vendeur sait immédiatement de quel engin on parle, sans échange de captures d’écran.
+- **Recherche tolérante aux fautes de frappe** grâce à l’index trigramme de PostgreSQL (`pg_trgm`).
+- **Équipe d’administration à rôles** : le propriétaire principal ne peut être ni supprimé ni rétrogradé ; les nouveaux membres reçoivent un lien d’activation valable 72 heures et utilisable une seule fois ; une désactivation déconnecte immédiatement.
+- **Photos sur Cloudinary** en production, avec un repli local pour le développement.
+
+## Qualité
+
+Validation des données avec Zod et tests Vitest sur une base jetable, effacée à chaque exécution.

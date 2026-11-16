@@ -1,0 +1,29 @@
+## What the product does
+
+Student Network China brings international and Chinese students together in one social network, in **English, French and Chinese**. Students find classmates, join communities for their university, city or interests, message each other, organise events, ask questions and read a practical guide to student life in China.
+
+- Real-time messaging and video calls
+- Communities, events, Q&A
+- Student guide and reference content (countries, provinces, cities, universities)
+- An Android app shipped as a Trusted Web Activity, with its Play Store listing in three languages
+
+## Architecture
+
+<Architecture layers={[
+  { name: 'Next.js 15', detail: 'Web, React 19, next-intl' },
+  { name: 'NestJS 11', detail: 'REST API + Socket.IO' },
+  { name: 'PostgreSQL', detail: 'Prisma, pg-boss' },
+  { name: 'S3 storage', detail: 'signed files' },
+]} />
+
+A modular monolith for the API, a separate web app and a shared package for types and validation schemas. The Android app wraps the website (TWA): one codebase for web and mobile.
+
+## Technical choices
+
+- **PostgreSQL for everything, no Redis.** Background jobs (pg-boss), realtime fan-out across instances (Socket.IO PostgreSQL adapter) and rate limits all run on the same database. Fewer services to host and monitor.
+- **Video calls with Agora** instead of a home-made WebRTC stack.
+- **Reference data kept apart** from demo data, so it can be loaded safely in production.
+
+## Quality
+
+Unit, integration and end-to-end tests. A status document records exactly what is verified and what is still open; the legal texts are drafts awaiting review.

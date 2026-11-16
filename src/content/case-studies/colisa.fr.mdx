@@ -1,0 +1,29 @@
+## Ce que fait le produit
+
+Colisa est un SaaS complet pour les **transitaires et cargos import-export** : suivi des colis en temps réel, clients, employés, expéditions par conteneur ou lot aérien, notifications WhatsApp et abonnements, avec un panneau de super administrateur.
+
+- **Site public** : présentation, tarifs, FAQ, inscription d’entreprise, suivi d’un colis par code ou **scan de QR code**
+- **Espace entreprise** : tableau de bord (indicateurs, graphique sur 30 jours, destinations principales), colis, expéditions, clients, employés, abonnement, réglages
+- **Portail client** : ses colis et leur statut
+- **Super admin** : entreprises, forfaits, paiements
+
+## Architecture
+
+<Architecture layers={[
+  { name: 'HTML, CSS, JS', detail: 'interface responsive, FR/EN' },
+  { name: 'Node.js + Express', detail: 'API, JWT' },
+  { name: 'SQLite', detail: 'intégré à Node.js' },
+  { name: 'WhatsApp', detail: 'notifications' },
+]} />
+
+## Choix techniques
+
+- **Aucune base externe à installer** : la base SQLite intégrée à Node.js suffit pour démarrer une entreprise.
+- **Prix calculés automatiquement** : au kilo en aérien, au mètre cube en maritime.
+- **Changement de statut groupé** : mettre à jour tout un conteneur en une fois, avec une notification WhatsApp par colis, dans la limite du quota du forfait.
+- **Étiquettes imprimables avec QR code** et export CSV pour Excel.
+- **Permissions par employé** (colis, clients, expéditions) et nombre d’employés limité selon le forfait.
+
+## État
+
+Complet et fonctionnel avec ses comptes de démonstration ; pas encore déployé.

@@ -1,0 +1,26 @@
+## What the product does
+
+School SaaS runs several private schools on one platform: schools, classes, students, attendance, assessments and grades, then finance (fees, invoices, balances). The project is **under construction**.
+
+## A phased method
+
+The project started with **a full specification, before any code**: requirements, user journeys, permissions, data model, database schema, architecture, threat model, testing strategy, cost estimate and a seven-phase roadmap.
+
+- **Phases 1 to 3, done**: specification, technical foundation, school management
+- **Phase 4, in progress**: attendance, assessments and validated grade entry; averages and report cards wait on decisions from the pilot school
+- **Phase 5, in progress**: fee catalogue, invoices and balances; payments and receipts come next
+
+Every open decision is logged, with what it blocks and who has to make the call.
+
+## Architecture
+
+<Architecture layers={[
+  { name: 'Next.js 16', detail: 'next-intl' },
+  { name: 'Better Auth', detail: 'sessions' },
+  { name: 'Drizzle ORM', detail: 'migrations' },
+  { name: 'PostgreSQL 17', detail: 'separate roles' },
+]} />
+
+## Quality
+
+One command replays the whole pipeline, like CI: formatting, types, lint, unit tests, integration tests against **a real PostgreSQL**, build, end-to-end tests and a dependency audit.

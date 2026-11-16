@@ -1,0 +1,26 @@
+## Ce que fait le produit
+
+School SaaS gère plusieurs écoles privées dans une même plateforme : établissements, classes, élèves, présences, évaluations et notes, puis les finances (frais, factures, soldes). Le projet est **en cours de construction**.
+
+## Une méthode par phases
+
+Le projet a commencé par **une spécification complète, avant toute ligne de code** : besoins, parcours utilisateurs, permissions, modèle de données, schéma de base, architecture, modèle de menaces, stratégie de tests, estimation des coûts et feuille de route en sept phases.
+
+- **Phases 1 à 3, terminées** : spécification, socle technique, gestion des écoles
+- **Phase 4, en cours** : présences, évaluations et saisie des notes avec validation ; le calcul des moyennes et les bulletins attendent des décisions de l’école pilote
+- **Phase 5, en cours** : catalogue de frais, factures et soldes ; les paiements et les reçus sont les prochaines étapes
+
+Chaque décision ouverte est consignée dans un journal, avec ce qui bloque et qui doit trancher.
+
+## Architecture
+
+<Architecture layers={[
+  { name: 'Next.js 16', detail: 'next-intl' },
+  { name: 'Better Auth', detail: 'sessions' },
+  { name: 'Drizzle ORM', detail: 'migrations' },
+  { name: 'PostgreSQL 17', detail: 'rôles séparés' },
+]} />
+
+## Qualité
+
+Une seule commande rejoue toute la chaîne, comme l’intégration continue : formatage, types, lint, tests unitaires, tests d’intégration sur **un vrai PostgreSQL**, build, tests de bout en bout et audit des dépendances.

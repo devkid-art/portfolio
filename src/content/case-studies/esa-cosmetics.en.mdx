@@ -1,0 +1,23 @@
+## What the product does
+
+A complete redesign of ESA Cosmetics’ online store in Douala, in the logo’s colours. The proposal was **fully working end to end**, but the client did not adopt it: the site online today is still the old one.
+
+- **Store**: New in, Best sellers, Sale and Back in stock rails; category and brand filters, sorting and search; product pages and similar products
+- **Slide-out cart**, free-shipping progress bar, promo codes
+- **Orders** saved, then sent as a summary on WhatsApp; a floating button to WhatsApp, Instagram, Facebook, TikTok, phone and e-mail
+- **Admin**: revenue, orders, stock alerts, products, categories, brands, promo codes, newsletter, site settings applied live
+
+## Architecture
+
+<Architecture layers={[
+  { name: 'HTML, CSS, JS', detail: 'responsive store' },
+  { name: 'Node.js + Express', detail: 'API, admin' },
+  { name: 'SQLite', detail: 'built into Node.js' },
+  { name: 'NotchPay', detail: 'card, Orange Money, MTN MoMo' },
+]} />
+
+## Technical choices
+
+- **Local mobile payments** with NotchPay; with no key configured, only cash on delivery is offered.
+- **Stock is restored automatically** when an order is cancelled.
+- **Optimised images** and S3-compatible storage, automatic backups, a VPS deployment guide.

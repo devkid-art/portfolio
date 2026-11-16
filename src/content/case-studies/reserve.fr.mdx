@@ -1,0 +1,29 @@
+## Ce que fait le produit
+
+Réserve est un SaaS de **prise de rendez-vous en ligne en marque blanche** pour les petits commerces : salons, barbiers, spas, photographes, garages, consultants. Il a d’abord été pensé pour le Cameroun et l’Afrique francophone.
+
+- Chaque commerce a **sa page de réservation à ses couleurs** et un tableau de bord de gestion
+- Les clients réservent **sans compte et sans paiement en ligne**, puis gèrent leur rendez-vous grâce à un lien sécurisé
+- Rappels et purges automatiques par une tâche planifiée
+
+## Architecture
+
+<Architecture layers={[
+  { name: 'Next.js 16', detail: 'App Router, TypeScript strict' },
+  { name: 'Drizzle ORM', detail: 'migrations SQL' },
+  { name: 'PostgreSQL 17', detail: 'Row-Level Security' },
+  { name: 'Resend', detail: 'e-mails' },
+]} />
+
+Un seul monolithe modulaire à déployer : ni Redis, ni file de messages, ni Docker en production (Docker sert uniquement à la base locale).
+
+## Choix techniques
+
+- **Isolation entre commerces au niveau de la base** avec la Row-Level Security de PostgreSQL : l’application se connecte avec un rôle qui ne voit que les données du commerce courant.
+- **Fuseaux horaires IANA** (Luxon) et protection contre les **doubles réservations concurrentes**.
+- **Sessions argon2id sans fournisseur d’authentification** externe.
+- **Documentation complète** : architecture, base de données, sécurité, tests, variables d’environnement, déploiement et liste de contrôle avant mise en ligne.
+
+## Qualité
+
+Vérification de types et lint, tests unitaires et d’intégration sur PostgreSQL, tests de bout en bout Playwright sur la version de production.
