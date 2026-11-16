@@ -6,5 +6,23 @@
     "cta": "See my work",
     "globeLabel": "Globe showing my routes between Cameroon (Douala, Yaoundé) and China (Nanjing, Guangzhou, Shanghai, Beijing)",
     "journey": "My route: from Douala to Nanjing, where I study."
+  },
+  "projects": {
+    "title": "Selected work",
+    "intro": "Complete products, designed, built and tested end to end. Three are live today; the others run with their demo data."
+  },
+  "ticket": {
+    "caseStudy": "Read the case study",
+    "openSite": "Open the site",
+    "stack": "Technologies",
+    "mediaLabel": "Preview of {name}",
+    "qrLabel": "QR code to the {name} site",
+    "status": {
+      "live": "Live",
+      "ready": "Ready",
+      "delivered": "Delivered",
+      "proposal": "Proposal",
+      "building": "Building {progress}%"
+    }
   }
 }

@@ -6,5 +6,23 @@
     "cta": "Voir mes projets",
     "globeLabel": "Globe montrant mes routes entre le Cameroun (Douala, Yaoundé) et la Chine (Nankin, Canton, Shanghai, Pékin)",
     "journey": "Ma route : de Douala à Nankin, où j’étudie."
+  },
+  "projects": {
+    "title": "Projets phares",
+    "intro": "Des produits complets, conçus, construits et testés de bout en bout. Trois sont en ligne aujourd’hui ; les autres tournent avec leurs données de démonstration."
+  },
+  "ticket": {
+    "caseStudy": "Voir l’étude de cas",
+    "openSite": "Ouvrir le site",
+    "stack": "Technologies",
+    "mediaLabel": "Aperçu de {name}",
+    "qrLabel": "QR code vers le site de {name}",
+    "status": {
+      "live": "En ligne",
+      "ready": "Prêt",
+      "delivered": "Livré",
+      "proposal": "Proposition",
+      "building": "En chantier {progress} %"
+    }
   }
 }

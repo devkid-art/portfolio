@@ -59,6 +59,47 @@ body {
   }
 }
 
+/* Project tickets: perforation notches where the stub tears off. The ticket clips them to half-moons. */
+.ticket-stub::before,
+.ticket-stub::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  top: -13px;
+}
+.ticket-stub::before {
+  left: -13px;
+}
+.ticket-stub::after {
+  right: -13px;
+}
+
+@media (min-width: 48rem) {
+  .ticket-stub::after {
+    top: auto;
+    bottom: -13px;
+    right: auto;
+    left: -13px;
+  }
+
+  /* Full motion: the tickets line up for the pinned sideways scroll. */
+  html[data-motion='full'] .pin-track {
+    flex-direction: row;
+    width: max-content;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: max(2rem, calc((100vw - 1240px) / 2 + 2rem));
+  }
+  html[data-motion='full'] .pin-track > .ticket {
+    width: min(1040px, 84vw);
+    flex: none;
+  }
+}
+
 :focus-visible {
   outline: 3px solid var(--color-accent);
   outline-offset: 3px;
